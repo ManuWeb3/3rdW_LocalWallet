@@ -6,6 +6,7 @@ import "../styles/globals.css";
 // You can also import additional chains from `@thirdweb-dev/chains` and pass them directly.
 const activeChain = "mumbai";
 
+// 3 attributes to <ThirdwebProvider>
 function MyApp({ Component, pageProps }) {
   return (
     <ThirdwebProvider 
@@ -15,7 +16,17 @@ function MyApp({ Component, pageProps }) {
       // coinbaseWallet(),
       // walletConnectV1(),
       localWallet(),
-      ]}>
+      ]}
+      sdkOptions={
+        {
+          gasless: {
+            openzeppelin: {
+              relayerUrl: "https://api.defender.openzeppelin.com/autotasks/a46ad2dc-5946-4e82-aa8c-968eb1d0422a/runs/webhook/cb1e7f89-27a8-4686-b04c-8bee342871de/AjKNB54MDUATye9YCw7gNK"
+            }
+          }
+        }
+      }
+      >
       <Component {...pageProps} />
     </ThirdwebProvider>
   );
